@@ -12,5 +12,5 @@ console.log(res);
 console.log(res ** 3);
 
 let firstNumber = (res ** 3).toString()[0];
-let secondNumber = (res ** 3 secondNumber).toString()[1];
+let secondNumber = (res ** 3).toString()[1];
 console.log(firstNumber + secondNumber);
