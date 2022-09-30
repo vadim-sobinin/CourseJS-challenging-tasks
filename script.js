@@ -1,10 +1,9 @@
 let num = 266219;
 let res = 1;
-while ((num / 10) > 0){
-  res *= num % 10;
-  // console.log(res);
-  num = Math.floor(num / 10);
-  // console.log(num);
+let array = String(num).split("");
+
+for (var i = 0; i < array.length; ++i) {
+  res *= array[i];
 }
 
 console.log(res);
