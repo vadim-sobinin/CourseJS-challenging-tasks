@@ -1,15 +1,17 @@
-let num = 266219;
-let res = 1;
-let array = String(num).split("");
+const num = 266219;
+// let res = 1;
+const string = String(num).split("");
 
-for (var i = 0; i < array.length; ++i) {
-  res *= array[i];
-}
+// for (var i = 0; i < string.length; ++i) {
+//   res *= string[i];
+// }
+
+let res = string.reduce((prev, item) => prev * item);
 
 console.log(res);
 
-console.log(res ** 3);
+res = res ** 3;
+console.log(res);
 
-let firstNumber = (res ** 3).toString()[0];
-let secondNumber = (res ** 3).toString()[1];
-console.log(firstNumber + secondNumber);
+res = res.toString();
+console.log(res[0] + res[1]);
