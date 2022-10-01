@@ -13,5 +13,5 @@ console.log(res);
 res = res ** 3;
 console.log(res);
 
-res = res.toString();
-console.log(res[0] + res[1]);
+res = res.toString().slice(0, 2);
+console.log(res);
