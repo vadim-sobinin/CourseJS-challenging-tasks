@@ -1,83 +1,64 @@
-'use strict';
-// Version 2
-let attemps;
+"use strict";
 
-function generateNumber() {
-  return Math.round(Math.random() * 100);
+const firstDate = document.querySelector("#a");
+const secondDate = document.querySelector("#b");
+
+const weekDays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const month = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function firstDateFormatting(){
+  const dateObj = new Date();
+  return `Today ${
+    weekDays[dateObj.getDay()]
+  }, ${dateObj.getDate()} ${
+    month[dateObj.getMonth()]
+  } ${dateObj.getFullYear()}, ${dateObj.getHours()} ${
+    dateObj.getHours() === 1 ? "hour" : "hours"
+  } ${dateObj.getMinutes()} ${
+    dateObj.getMinutes() === 1 ? "minute" : "minutes"
+  } ${dateObj.getSeconds()} ${dateObj.getSeconds() === 1 ? "second" : "seconds"}`;
 }
 
-function countAttemps() {
-  if (attemps <= 1) {
-    return endGame("Opps... Attempts are over. Would you like to try again?");
-  } else{
-    return attemps--;
-  }
-}
-
-function isNumber(num) {
-  return (!isNaN(parseInt(num)) && isFinite(num));
-}
-
-function makeGuess (message = `${attemps} attemps is left! Guess a number from 1 to 100:`) {
-  
-  let guessedNumber = prompt(message);
-
-  if (guessedNumber === null){
-    stopGame();
+function alwaysTwoDigits(number){
+  if (String(number).length === 1) {
+    return "0"+number;
   } else {
-    if (isNumber(guessedNumber)){
-      
-      if (+guessedNumber > 0 && guessedNumber <= 100){
-        return +guessedNumber;
-      } else{
-        return makeGuess("Your number MUST be between 1 and 100! Try again:");
-      }
-       
-    } else {
-      return makeGuess("Please enter a NUMBER!");
-    }
-  }
-
-}
-
-function checkNumber(guessedNumber, rightNumber){
-  // console.log(`Right number is ${rightNumber}`);
-  // console.log(`Guessed number is ${guessedNumber}`);
-  
-  if (attemps > 0) {
-    if (guessedNumber < rightNumber){
-      countAttemps();
-      checkNumber(makeGuess(`${attemps} attemps is left! Right number is more than ${guessedNumber}, try again:`), rightNumber);
-    } else if (guessedNumber > rightNumber){
-      countAttemps();
-      checkNumber(makeGuess(`${attemps} attemps is left! Right number is less than ${guessedNumber}, try again:`), rightNumber);
-    } else if (rightNumber === guessedNumber){
-      endGame("Congratulations! You guessed it! \n Do you want to play more?");
-    }
-  }
-  
-}
-
-function stopGame(){
-  return alert("Thanks for the game! Hope to see you again! Goodbye!");
-}
-
-function endGame(message){
-  const shalWeContinue = confirm(message);
-  if (shalWeContinue) {
-    startGame();
-  } else {
-    stopGame();
+    return number;
   }
 }
-
-
-function startGame() {
-  attemps = 10;
-  const rightNumber = generateNumber();
-  console.log(`Right number is ${rightNumber}`);
-  checkNumber(makeGuess(), rightNumber);
+function secondDateFormatting(){
+  const dateObj = new Date();
+  return `${alwaysTwoDigits(dateObj.getDate())}.${alwaysTwoDigits(dateObj.getMonth()+1)}.${dateObj.getFullYear()} - ${alwaysTwoDigits(dateObj.getHours())}:${alwaysTwoDigits(dateObj.getMinutes())}:${alwaysTwoDigits(dateObj.getSeconds())}`;
 }
 
+setInterval(function(){
+  firstDate.innerText = firstDateFormatting();
+  secondDate.innerText = secondDateFormatting();
+}, 1000);
 
-startGame();
+
+
+
+
+
