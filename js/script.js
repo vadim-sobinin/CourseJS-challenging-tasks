@@ -1,37 +1,29 @@
-"use strict";
+'use strict';
+const input = document.querySelector("#text");
+const btn = document.querySelector("#btn");
+const ebtn = document.querySelector("#e_btn");
+const inputRange = document.querySelector("#range");
+const circle = document.querySelector("#circle");
+const square = document.querySelector("#square");
 
-const booksList = document.querySelector(".books")
-const books = document.querySelectorAll(".book");
-const secondBookElems = books[0].querySelectorAll("li");
-const fifthBookElems = books[5].querySelectorAll("li");
-const sixthBook = books[2].querySelectorAll("li");
+function changeBgColor (color) {
+  square.style.backgroundColor = input.value;
+}
 
-document.querySelector(".adv").remove();
+function hideBtn(){
+  ebtn.style.display = "none";
+}
 
-document.body.style.backgroundImage = "url(../image/you-dont-know-js.jpg)";
+function setCircleSize(){
+  document.querySelector("#range-span").textContent = inputRange.value;
+  circle.style.width = `${inputRange.value}%`;
+  circle.style.height = `${inputRange.value}%`;
+}
 
-books[4].querySelector("a").textContent = "Book 3. this & Object Prototypes";
+setCircleSize();
 
-booksList.append(books[1]);
-booksList.append(books[0]);
-booksList.append(books[4]);
-booksList.append(books[3]);
-booksList.append(books[5]);
-booksList.append(books[2]);
+btn.addEventListener('click', changeBgColor);
 
-secondBookElems[1].after(secondBookElems[3]);
-secondBookElems[3].after(secondBookElems[6]);
-secondBookElems[6].after(secondBookElems[8]);
-secondBookElems[9].after(secondBookElems[2]);
+ebtn.addEventListener('click', hideBtn);
 
-fifthBookElems[1].after(fifthBookElems[9]);
-fifthBookElems[9].after(fifthBookElems[3]);
-fifthBookElems[3].after(fifthBookElems[4]);
-fifthBookElems[2].after(fifthBookElems[6]);
-fifthBookElems[6].after(fifthBookElems[7]);
-
-sixthBook[8].insertAdjacentHTML("afterend", "<li>Chapter 8: Beyond ES6</li>");
-
-console.log(books);
-
-console.log(sixthBook);
+inputRange.addEventListener('input', setCircleSize);
