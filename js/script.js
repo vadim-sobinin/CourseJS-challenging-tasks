@@ -8,7 +8,7 @@ const sixthBook = books[2].querySelectorAll("li");
 
 document.querySelector(".adv").remove();
 
-document.body.style.backgroundImage = "url(../image/you-dont-know-js.jpg)";
+document.body.style.backgroundImage = "url(./image/you-dont-know-js.jpg)";
 
 books[4].querySelector("a").textContent = "Book 3. this & Object Prototypes";
 
