@@ -1,123 +1,50 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <script src="./js/script.js" defer></script>
-    <title>You don't know js</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ToDo</title>
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="./js/script.js" defer></script>
 </head>
+
 <body>
-<h1>You Don't Know JS (Book Series)</h1>
-<aside class="books">
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/scope%20%26%20closures/README.md#%D0%92%D1%8B-%D0%BD%D0%B5-%D0%B7%D0%BD%D0%B0%D0%B5%D1%82%D0%B5-js-%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C-%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8-%D0%B8-%D0%B7%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F"
-               target="_blank"> Book 2. Scopes & closure</a></h2>
-        <ul>
-            <li>Introduction</li>
-            <li>Foreword</li>
-            <li>Appendix C: Lexical This</li>
-            <li>Chapter 1: What is scope?</li>
-            <li>Chapter 4: Hoisting variables</li>
-            <li>Chapter 5: Closing the scope</li>
-            <li>Chapter 2: Lexical Scope</li>
-            <li>Appendix A: Dynamic Scope</li>
-            <li>Chapter 3: Scope: Functions vs. Blocks</li>
-            <li>Appendix B: Polyfilling the Block Scope</li>
-            <li>Appendix D: Acknowledgements!</li>
-        </ul>
-    </div>
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/up%20%26%20going/README.md#%D0%92%D1%8B-%D0%BD%D0%B5-%D0%B7%D0%BD%D0%B0%D0%B5%D1%82%D0%B5-js-%D0%9D%D0%B0%D1%87%D0%BD%D0%B8%D1%82%D0%B5-%D0%B8-%D0%A1%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%D1%81%D1%8C"
-               target="_blank">Book 1. Up & Going</a></h2>
-        <ul>
-            <li class="chapter">Introduction</li>
-            <li class="chapter">Foreword</li>
-            <li class="chapter">Chapter 1: Introduction to Programming</li>
-            <li class="chapter">Chapter 2: Introduction to JavaScript</li>
-            <li class="chapter">Chapter 3: Introduction to "You Don't Know JavaScript</li>
-            <li class="chapter">Appendix A: Acknowledgements!</li>
-        </ul>
-    </div>
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/es6%20%26%20beyond/README.md#you-dont-know-js-es6--beyond"
-               target="_blank">Book 6. ES6 and Beyond</a></h2>
-        <ul>
-            <li>Introduction</li>
-            <li>Foreword</li>
-            <li>Chapter 1: ES: Present and Future</li>
-            <li>Chapter 2: Syntax</li>
-            <li>Chapter 3: Structure</li>
-            <li>Chapter 4: Managing asynchronous operations</li>
-            <li>Chapter 5: Collections</li>
-            <li>Chapter 6: Additions to the API</li>
-            <li>Chapter 7: Metaprogramming</li>
-            <li>Appendix A: Acknowledgements!</li>
-        </ul>
-    </div>
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/types%20%26%20grammar/README.md#you-dont-know-js-types--grammar"
-               target="_blank">Book 4. Types & Grammar</a></h2>
-        <ul>
-            <li>Introduction</li>
-            <li>Foreword</li>
-            <li>Chapter 1: Types</li>
-            <li>Chapter 2: Values</li>
-            <li>Chapter 3: Natives</li>
-            <li>Chapter 4: Coercion</li>
-            <li>Chapter 5: Grammar</li>
-            <li>Appendix A: Mixed Environment JavaScript</li>
-            <li>Appendix B: Acknowledgements!</li>
-        </ul>
-    </div>
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/this%20%26%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes"
-               target="_blank">Book 3. this & Object Propotypes</a></h2>
-        <ul>
-            <li>Introduction</li>
-            <li>Foreword</li>
-            <li>Chapter 1: <em>this</em> Or That?</li>
-            <li>Chapter 2: <em>this</em> now makes sense!</li>
-            <li>Chapter 3: Objects</li>
-            <li>Chapter 4: Mixing objects "classes"</li>
-            <li>Chapter 5: Prototypes</li>
-            <li>Chapter 6: Delegating behavior</li>
-            <li>Appendix A: ES6 <em>classes</em></li>
-            <li>Appendix B: Acknowledgements!</li>
-        </ul>
-    </div>
-    <div class="book">
-        <h2>
-            <a href="https://github.com/azat-io/you-dont-know-js-ru/blob/master/async%20%26%20performance/README.md#you-dont-know-js-async--performance"
-               target="_blank">Book 5. Async & Performance</a></h2>
-        <ul>
-            <li>Introduction</li>
-            <li>Foreword</li>
-            <li>Chapter 4: Generators</li>
-            <li>Chapter 2: Callbacks</li>
-            <li>Chapter 3: Promises</li>
-            <li>Appendix A: Library: asynquence</li>
-            <li>Chapter 5: Program Performance</li>
-            <li>Chapter 6: Benchmarking and Tuning</li>
-            <li>Appendix B: Extended Asynchronous Patterns</li>
-            <li>Chapter 1: Asynchrony: Now and Then</li>
-            <li>Appendix C: Acknowledgements!</li>
-        </ul>
-    </div>
-</aside>
 
+	<header class="header">
+		<form class="todo-control">
+			<label><input class="header-input" type="text" placeholder="Какие планы?"></label>
+			<button class="header-button" id="add" type="submit"></button>
+		</form>s
+	</header>
 
-<div class="adv">
-    <span>Buy google inexpensively</span>
-</div>
+	<div class="todo-container">
+
+		<ul class="todo todo-list" id="todo">
+			<li class="todo-item">
+				<span class="text-todo">Сварить кофе</span>
+				<div class="todo-buttons">
+					<button class="todo-remove"></button>
+					<button class="todo-complete"></button>
+				</div>
+			</li>
+		</ul>
+		<ul class="todo todo-completed" id="completed">
+			<li class="todo-item">
+				<span class="text-todo">Помыть посуду</span>
+				<div class="todo-buttons">
+					<button class="todo-remove"></button>
+					<button class="todo-complete"></button>
+				</div>
+			</li>
+		</ul>
+	</div>
 
 
 </body>
+
 </html>
