@@ -1,76 +1,76 @@
 "use strict";
 
-const toDoInput = document.querySelector(".header-input");
-const addToDoBtn = document.querySelector(".header-button");
-const toDoList = document.querySelector(".todo-list");
-const toDoComplete = document.querySelector(".todo-completed");
+function DomElement () {
+  this.selector = "";
+  this.height = "";
+  this.width = "";
+  this.bg = "";
+  this.fontSize = 0;
+  this.selectElem = "";
+  this.topOffset = 0;
+  this.leftOffset= 0;
 
-const form = document.querySelector(".todo-control");
+  this.createElement = function () {
+    
+    if (this.selector[0] === ".") {
+      const newDiv = document.createElement("div");
+      newDiv.classList.add(this.selector.slice(1));
+      newDiv.style.cssText = `
+      height: ${this.height};
+      width: ${this.width};
+      background-color: ${this.bg};;
+      font-size: ${this.fontSize};
+    `;
+      newDiv.textContent = `This is div with class "${this.selector.slice(1)}"`;
+      document.body.append(newDiv);
+      this.selectElem = document.querySelector(this.selector);
 
-const toDoData = [];
-
-
-
-function init(){
-  if (localStorage.length != 0){
-    for (let i = 0; i < localStorage.length; i++){
-    toDoData.push(JSON.parse(localStorage.getItem(i)));
+    } else if (this.selector[0] === "#") {
+      const newSpan = document.createElement("span");
+      newSpan.id = this.selector.slice(1);
+      console.log(newSpan);
+      newSpan.classList.add(this.selector.slice(1));
+      newSpan.style.cssText = `
+        height: ${this.height};
+        width: ${this.width};
+        background-color: ${this.bg};;
+        font-size: ${this.fontSize};
+      `;
+      newSpan.textContent = `This is span with ID "${this.selector.slice(1)}"`;
+      document.body.append(newSpan);
+      this.selectElem = document.querySelector(this.selector);
     }
-  }
-  render();
-}
-
-init();
-
-function render(){
-  localStorage.clear();
-  toDoList.innerHTML = "";
-  toDoComplete.innerHTML = "";
-
-  toDoData.forEach((toDo, index) => {
-    const li = document.createElement('li');
-
-    li.classList.add('todo-item');
-
-    li.innerHTML = `<span class="text-todo">${toDo.text}</span>
-    <div class="todo-buttons">
-      <button class="todo-remove"></button>
-      <button class="todo-complete"></button>
-    </div>`;
-
-    toDo.completed ? toDoComplete.append(li) : toDoList.append(li);
-
-    li.querySelector('.todo-complete').addEventListener('click', () => {
-      toDo.completed = !toDo.completed;
-      render();
-    });
-
-    li.querySelector(".todo-remove").addEventListener('click', () => {
-      toDoData.splice(toDoData.indexOf(toDo), 1);
-      render();
-    });
-
-    localStorage.setItem(index, JSON.stringify(toDo));
-
-  });
-}
-render();
-
-function addToDo (text){
-  const newToDo = {
-    text: text,
-    completed: false
   };
-  toDoData.push(newToDo);
-  render();
 }
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (toDoInput.value != ""){
-    addToDo(toDoInput.value);
-    toDoInput.value = "";
-  }
-  
+const newObj = new DomElement();
+newObj.selector = ".square";
+newObj.height = "100px";
+newObj.width = "100px";
+newObj.bg = "green";
+newObj.fontSize = "20px";
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  newObj.createElement();
+  newObj.selectElem.style.position = "absolute";  
 });
 
+window.addEventListener('keydown', (event) => {
+  switch (event.code){
+    case "ArrowDown":
+      newObj.topOffset += 10;
+      break;
+    case "ArrowUp":
+      newObj.topOffset -= 10;
+      break;
+    case "ArrowLeft":
+      newObj.leftOffset -= 10;
+      break;
+    case "ArrowRight":
+      newObj.leftOffset += 10;
+      break;
+  }
+  newObj.selectElem.style.left = `${newObj.leftOffset}px`;
+  newObj.selectElem.style.top = `${newObj.topOffset}px`;
+  
+});
