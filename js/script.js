@@ -1,40 +1,34 @@
-"use stcrict";
+'use stcrict';
+const fromURL = '../db.json';
+const toURL = 'https://jsonplaceholder.typicode.com/posts';
 
-const btn = document.querySelector("#btn");
-console.log("btn", btn);
+const getData = (URL) => {
+  fetch(URL)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json().then((data) => sendData(data, toURL));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-const elem = document.querySelector("#element");
-console.log("elem", elem);
+const sendData = (data, toURL) => {
+  fetch(toURL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.status + ' status');
+      }
+      return response.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+};
 
-let active = false;
-let count = 50;
-let idInterval;
-
-document.querySelector("#reset").addEventListener("click" , () => {
-  active = false;
-  cancelAnimationFrame(idInterval);
-  count = 50;
-  elem.style.top = count + "px";
-});
-
-btn.addEventListener("click", () => {
-  active = !active;
-  
-
-  active ? idInterval = requestAnimationFrame(animate) : cancelAnimationFrame(idInterval);
-
-});
-
-const animate = () => {
-  count++;
-  idInterval = requestAnimationFrame(animate);
-
-  if (count < 700) {
-    elem.style.top = count + "px";
-  } else {
-    cancelAnimationFrame(idInterval);
-    count = 50;
-    elem.style.top = count + "px";
-    active = !active;
-  }
-}
+getData(fromURL);
