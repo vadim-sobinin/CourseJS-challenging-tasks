@@ -5,7 +5,8 @@ const URL =
 
 fetch(URL)
   .then((res) => res.json())
-  .then((data) => renderList(data.cars));
+  .then((data) => renderList(data.cars))
+  .catch((error) => console.warn('Opps... Some error' + error));
 
 const renderList = (data) => {
   const selector = document.createElement('select');
@@ -35,5 +36,6 @@ const renderCarInfo = async (id) => {
       document.getElementById(
         'result',
       ).innerHTML = `<span>Car: ${carData.brand} ${carData.model} <br>Price: ${carData.price}$</span>`;
-    });
+    })
+    .catch((error) => console.warn('Opps... Some error' + error));
 };
