@@ -1,65 +1,39 @@
 'use stcrict';
-const fromURL = '../db.json';
-const toURL = 'https://jsonplaceholder.typicode.com/posts';
 
-const getData = (URL) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', URL);
-  xhr.send();
+const URL =
+  'https://mfs-14.getcourse.ru/public/files/12250/88/84120897322424565eb4cddeea2b910a.json?e=1670687999&s=jpPROkped6BoWYC26OBvDQ';
 
-  xhr.onload = () => {
-    if (xhr.status != 200) {
-      console.log(`Error ${xhr.status}: ${xhr.statusText}`);
+fetch(URL)
+  .then((res) => res.json())
+  .then((data) => renderList(data.cars));
+
+const renderList = (data) => {
+  const selector = document.createElement('select');
+  selector.insertAdjacentHTML('beforeend', `<option value="">Choose car</option>`);
+
+  data.forEach((car, index) => {
+    selector.insertAdjacentHTML('beforeend', `<option value="${index}">${car.brand}</option>`);
+  });
+  document.body.append(selector);
+
+  document.body.insertAdjacentHTML('beforeend', '<div id="result"></div>');
+
+  selector.addEventListener('change', (e) => {
+    if (e.target.value != '') {
+      renderCarInfo(e.target.value);
     } else {
-      console.log('Data received successfully!');
-      console.log(xhr.response);
-      sendData(xhr.response, toURL);
+      document.getElementById('result').innerHTML = '';
     }
-  };
-
-  xhr.onprogress = (event) => {
-    if (xhr.status == 200) {
-      if (event.lengthComputable) {
-        console.log(`Got ${event.loaded} from ${event.total} bytes`);
-      } else {
-        console.log(`Got ${event.loaded} bytes`);
-      }
-    }
-  };
-
-  xhr.onerror = () => {
-    console.log('Request failed');
-  };
+  });
 };
 
-const sendData = (data, toURL) => {
-  let xhr = new XMLHttpRequest();
-  xhr.open('POST', toURL);
-  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-  xhr.send(data);
-
-  xhr.onload = () => {
-    if (xhr.status != 201) {
-      console.log(`Error ${xhr.status}: ${xhr.statusText}`);
-    } else {
-      console.log('Data sent successfully!');
-      console.log(xhr.response);
-    }
-  };
-
-  xhr.onprogress = (event) => {
-    if (xhr.status == 200) {
-      if (event.lengthComputable) {
-        console.log(`Sent ${event.loaded} from ${event.total} bytes`);
-      } else {
-        console.log(`Sent ${event.loaded} bytes`);
-      }
-    }
-  };
-
-  xhr.onerror = () => {
-    console.log('Data sent failed');
-  };
+const renderCarInfo = async (id) => {
+  const carData = await fetch(URL)
+    .then((res) => res.json())
+    .then((data) => data.cars[id])
+    .then((carData) => {
+      document.getElementById(
+        'result',
+      ).innerHTML = `<span>Car: ${carData.brand} ${carData.model} <br>Price: ${carData.price}$</span>`;
+    });
 };
-
-getData(fromURL);
